@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adinkes Training Center</title>
+    <title>Medika Edukasi Nusantara</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
         theme: {
           extend: {
             colors: {
-              'alo-blue': '#1E73BE', // Warna biru khas referensi
+              'alo-blue': '#1E73BE', 
             },
             animation: {
               'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -37,7 +37,6 @@
       .icon-filled {
         font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
-      /* Efek transisi halus untuk dropdown */
       .group:hover .dropdown-menu {
         opacity: 1;
         visibility: visible;
@@ -51,18 +50,18 @@
       }
     </style>
 
-    <!-- React & ReactDOM (Production) -->
+    <!-- React & ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     
-    <!-- Babel untuk menerjemahkan JSX -->
+    <!-- Babel untuk JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800">
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState } = React;
 
         const programs = [
           { id: 1, title: 'Bantuan Hidup Dasar (BHD)', desc: 'Pelatihan esensial penanganan kegawatdaruratan medis dasar.', icon: 'ecg_heart', color: 'text-red-500', bg: 'bg-red-50' },
@@ -111,6 +110,10 @@
           'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80',
           'https://images.unsplash.com/photo-1551076805-e1869043e560?auto=format&fit=crop&w=600&q=80',
           'https://images.unsplash.com/photo-1527613426401-41d44465a3a5?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1584982751601-971dc37d6202?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&q=80'
         ];
 
         function App() {
@@ -144,13 +147,12 @@
             }, 2500);
           };
 
-          // Data untuk tombol lingkaran di Hero Section
+          // HANYA ADA 4 MENU (Tidak ada Galeri di sini)
           const heroActions = [
             { id: 'pelatihan', label: 'Pelatihan', icon: 'school', color: 'text-blue-500', action: () => navigateToSchedule('Pelatihan') },
             { id: 'webinar', label: 'Webinar', icon: 'videocam', color: 'text-pink-500', action: () => navigateToSchedule('Webinar') },
-            { id: 'workshop', label: 'Workshop', icon: 'work', color: 'text-teal-500', action: () => navigateToSchedule('Workshop') },
             { id: 'jadwal', label: 'Cek Jadwal', icon: 'calendar_month', color: 'text-orange-500', action: () => setActiveTab('Jadwal') },
-            { id: 'program', label: 'Silabus', icon: 'auto_stories', color: 'text-blue-500', action: () => setActiveTab('Program') },
+            { id: 'program', label: 'Silabus', icon: 'auto_stories', color: 'text-blue-500', action: () => setActiveTab('Program') }
           ];
 
           const renderContent = () => {
@@ -158,26 +160,20 @@
               case 'Beranda':
                 return (
                   <div className="animate-fade-in pb-12 w-full max-w-none px-0">
-                    
-                    {/* HERO SECTION - DESAIN BARU ALA ALODOKTER */}
                     <section className="bg-alo-blue pt-12 pb-0 px-6 relative overflow-hidden">
                       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-end">
-                        
-                        {/* Kiri: Teks dan Tombol */}
                         <div className="w-full md:w-3/5 pb-20 pt-10 z-10 text-center md:text-left">
                           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-bold text-white mb-4 leading-tight tracking-tight">
-                            ADINKES TRAINING CENTER
+                            Layanan Cepat dan Tepat
                           </h1>
                           <p className="text-xl text-blue-100 mb-12 font-medium">
-                            Lembaga Pelatihan dan Edukasi Medis Terbaik di Indonesia
+                            Layanan Booking Pelatihan dan Edukasi Medis Terbaik di Indonesia
                           </p>
 
-                          {/* Deretan Tombol Lingkaran */}
                           <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-10">
                             {heroActions.map(action => (
                               <div key={action.id} className="flex flex-col items-center cursor-pointer group" onClick={action.action}>
                                 <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center relative transition-transform transform group-hover:scale-105 shadow-md">
-                                  {/* Lingkaran Halo saat Hover */}
                                   <div className="absolute inset-0 rounded-full border-[5px] border-white/30 scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                   <span className={`material-symbols-outlined text-[32px] md:text-[40px] icon-filled ${action.color}`}>{action.icon}</span>
                                 </div>
@@ -187,23 +183,17 @@
                           </div>
                         </div>
 
-                        {/* Kanan: Gambar Sosok (Meniru efek cutout) */}
                         <div className="w-full md:w-2/5 flex justify-center md:justify-end relative">
                           <img 
                             src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=700&q=80" 
                             alt="Tenaga Medis" 
                             className="h-[350px] md:h-[450px] object-cover object-top filter brightness-105 rounded-t-[100px] md:rounded-none md:rounded-tl-[100px]"
-                            style={{ 
-                              // Sedikit memudarkan bagian bawah agar menyatu
-                              maskImage: 'linear-gradient(to top, transparent 0%, black 15%)',
-                              WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 15%)'
-                            }}
+                            style={{ maskImage: 'linear-gradient(to top, transparent 0%, black 15%)', WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 15%)' }}
                           />
                         </div>
                       </div>
                     </section>
 
-                    {/* SECTION BERITA (Dipindahkan menempel ke bawah Hero) */}
                     <section className="bg-slate-50 px-6 py-16">
                       <div className="max-w-7xl mx-auto">
                         <div className="flex justify-between items-end mb-8">
@@ -232,9 +222,6 @@
                             </div>
                           ))}
                         </div>
-                        <div className="mt-8 text-center md:hidden">
-                           <button onClick={() => setActiveTab('Berita')} className="w-full py-3 bg-blue-50 text-alo-blue font-bold rounded-xl border border-blue-100">Lihat Semua Berita</button>
-                        </div>
                       </div>
                     </section>
                   </div>
@@ -254,34 +241,18 @@
                       </div>
                       <div className="w-full md:w-1/2 space-y-6 text-slate-600 leading-relaxed">
                         <h3 className="text-2xl font-bold text-blue-900">Medika Edukasi Nusantara</h3>
-                        <p>
-                          Didirikan sejak tahun 2015, Medika Edukasi Nusantara adalah lembaga pelatihan independen yang berdedikasi penuh untuk memajukan kualitas Sumber Daya Manusia (SDM) di sektor kesehatan Indonesia.
-                        </p>
+                        <p>Didirikan sejak tahun 2015, Medika Edukasi Nusantara adalah lembaga pelatihan independen yang berdedikasi penuh untuk memajukan kualitas Sumber Daya Manusia (SDM) di sektor kesehatan Indonesia.</p>
                         <div className="bg-blue-50 p-6 rounded-2xl border-l-4 border-alo-blue">
                           <h4 className="font-bold text-blue-900 mb-2 text-lg">Visi Kami</h4>
                           <p>Menjadi pusat inovasi dan edukasi kesehatan terkemuka di Asia Tenggara yang menghasilkan tenaga kesehatan profesional, kompeten, dan beretika.</p>
                         </div>
-                        <div>
-                          <h4 className="font-bold text-slate-800 mb-3 text-lg">Misi Kami</h4>
-                          <ul className="space-y-3">
-                            {['Menyelenggarakan pelatihan berbasis kompetensi sesuai standar global.', 'Membangun ekosistem belajar digital untuk menjangkau pelosok negeri.', 'Meningkatkan kesadaran akan pentingnya Patient Safety.'].map((item, i) => (
-                              <li key={i} className="flex items-start gap-3">
-                                <span className="material-symbols-outlined text-[20px] text-blue-500 shrink-0 mt-0.5 icon-filled">check_circle</span>
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
                       </div>
                     </div>
 
-                    {/* Susunan Organisasi - Tetap dipertahankan */}
                     <div className="pt-12 border-t border-slate-200">
                        <div className="text-center mb-10 max-w-2xl mx-auto">
                         <h3 className="text-2xl font-bold text-slate-800 mb-3">Susunan Organisasi</h3>
-                        <p className="text-slate-500 leading-relaxed">
-                          Keberhasilan lembaga kami didukung oleh jajaran pimpinan dan manajemen yang kompeten, berdedikasi tinggi, serta memiliki pengalaman puluhan tahun di industri kesehatan dan pendidikan. Berikut adalah struktur inti pengelola Medika Edukasi Nusantara.
-                        </p>
+                        <p className="text-slate-500 leading-relaxed">Keberhasilan lembaga kami didukung oleh jajaran pimpinan dan manajemen yang kompeten, berdedikasi tinggi, serta memiliki pengalaman puluhan tahun.</p>
                       </div>
                       
                       <div className="flex flex-col items-center space-y-8">
@@ -294,7 +265,6 @@
                         </div>
                         
                         <div className="w-px h-8 bg-slate-300"></div>
-
                         <div className="w-full max-w-2xl h-px bg-slate-300 relative">
                             <div className="absolute left-0 top-0 w-px h-8 bg-slate-300"></div>
                             <div className="absolute right-0 top-0 w-px h-8 bg-slate-300"></div>
@@ -319,7 +289,6 @@
               case 'Pengajar':
               case 'Berita':
               case 'Galeri':
-                // Membungkus halaman lain dengan padding standar
                 return (
                   <div className="animate-fade-in max-w-6xl mx-auto px-6 py-12">
                      {activeTab === 'Program' && (
@@ -402,12 +371,10 @@
                         </div>
                      )}
                      
-                     {/* Tambahkan konten halaman lainnya secara ringkas di sini agar file rapi */}
+                     {}
                      {activeTab === 'Pengajar' && (
                         <div>
-                          <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold text-slate-800 mb-4">Profil Pengajar Ahli</h2>
-                          </div>
+                          <div className="text-center mb-12"><h2 className="text-3xl font-bold text-slate-800 mb-4">Profil Pengajar Ahli</h2></div>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {instructors.map((inst) => (
                               <div key={inst.id} className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 text-center group">
@@ -441,12 +408,18 @@
                      )}
 
                      {activeTab === 'Galeri' && (
-                         <div>
-                           <div className="text-center mb-12"><h2 className="text-3xl font-bold text-slate-800">Galeri Kegiatan</h2></div>
-                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                         <div className="w-full">
+                           <div className="text-center mb-12">
+                             <h2 className="text-3xl font-bold text-slate-800 mb-2">Galeri Kegiatan</h2>
+                             <p className="text-slate-500">Dokumentasi momen berharga selama proses pelatihan berlangsung.</p>
+                           </div>
+                           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {galleryList.map((img, idx) => (
-                              <div key={idx} className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-200">
+                              <div key={idx} className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-slate-200 shadow-sm hover:shadow-xl transition-all">
                                 <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                <div className="absolute inset-0 bg-alo-blue/0 group-hover:bg-alo-blue/20 transition-colors duration-300 flex items-center justify-center">
+                                   <span className="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity text-4xl drop-shadow-lg">zoom_in</span>
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -464,37 +437,28 @@
           return (
             <div className="min-h-screen flex flex-col relative bg-slate-50">
               
-              {/* NAVBAR - BIRU SOLID ALA ALODOKTER */}
               <nav className="bg-alo-blue sticky top-0 z-50 shadow-md">
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="flex justify-between items-center h-[72px]">
-                    
-                    {/* Logo */}
                     <div className="flex items-center gap-2 cursor-pointer" onClick={() => setActiveTab('Beranda')}>
-                      <span className="text-2xl font-bold text-white tracking-tight uppercase">ADINKESTC</span>
+                      <span className="text-2xl font-bold text-white tracking-tight uppercase">MEDIKAEDU</span>
                     </div>
 
-                    {/* Search Bar (Visual Only) */}
                     <div className="hidden lg:flex flex-1 max-w-md mx-8 relative">
                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-white/70 text-[20px]">search</span>
                        <input type="text" placeholder="Cari info pelatihan..." className="w-full bg-white/10 border border-white/20 rounded-md py-2 pl-10 pr-4 text-white placeholder-white/70 focus:outline-none focus:bg-white/20 transition-colors" />
                     </div>
 
-                    {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center space-x-2">
                       <button onClick={() => setActiveTab('Beranda')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Beranda' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Beranda</button>
                       <button onClick={() => setActiveTab('Profil')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Profil' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Profil</button>
                       <button onClick={() => setActiveTab('Program')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Program' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Program</button>
                       
-                      {/* Dropdown Jadwal (Menggunakan CSS Hover) */}
                       <div className="relative group h-full flex items-center">
                         <button onClick={() => navigateToSchedule('Pelatihan')} className={`px-3 py-2 text-sm transition-all flex items-center gap-1 cursor-pointer ${activeTab === 'Jadwal' ? 'text-white font-bold' : 'text-blue-100 group-hover:text-white'}`}>
                           Jadwal <span className="material-symbols-outlined text-[16px]">expand_more</span>
                         </button>
-                        
-                        {/* Area penangkap hover agar tidak terputus */}
                         <div className="absolute top-full left-0 w-full h-4 bg-transparent"></div>
-
                         <div className="dropdown-menu absolute top-[calc(100%+0.5rem)] left-0 w-48 bg-white border border-slate-100 rounded-xl shadow-xl flex flex-col py-2 z-50">
                            <button onClick={() => navigateToSchedule('Pelatihan')} className="text-left px-5 py-2.5 text-sm text-slate-700 hover:bg-blue-50 hover:text-alo-blue font-medium">Pelatihan</button>
                            <button onClick={() => navigateToSchedule('Webinar')} className="text-left px-5 py-2.5 text-sm text-slate-700 hover:bg-blue-50 hover:text-alo-blue font-medium">Webinar</button>
@@ -504,21 +468,19 @@
 
                       <button onClick={() => setActiveTab('Pengajar')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Pengajar' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Pengajar</button>
                       <button onClick={() => setActiveTab('Berita')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Berita' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Berita</button>
+                      <button onClick={() => setActiveTab('Galeri')} className={`px-3 py-2 text-sm transition-all ${activeTab === 'Galeri' ? 'text-white font-bold' : 'text-blue-100 hover:text-white'}`}>Galeri</button>
                     </div>
 
-                    {/* Action Buttons Kanan */}
                     <div className="hidden lg:flex items-center gap-3 ml-4">
                        <button className="bg-white text-alo-blue px-4 py-2 rounded-md font-bold text-sm hover:bg-blue-50 transition-colors">Masuk</button>
                     </div>
 
-                    {/* Mobile Menu Button */}
                     <button className="lg:hidden p-2 text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                       <span className="material-symbols-outlined text-[24px]">{isMobileMenuOpen ? 'close' : 'menu'}</span>
                     </button>
                   </div>
                 </div>
 
-                {/* Mobile Menu Dropdown (Tertata Rapi) */}
                 {isMobileMenuOpen && (
                   <div className="lg:hidden bg-alo-blue border-t border-blue-500 absolute w-full px-4 py-4 space-y-1 shadow-xl">
                     <button onClick={() => {setActiveTab('Beranda'); setIsMobileMenuOpen(false)}} className="w-full text-left px-4 py-3 rounded-lg text-white font-medium hover:bg-blue-600">Beranda</button>
@@ -535,20 +497,19 @@
                     </div>
                     <button onClick={() => {setActiveTab('Pengajar'); setIsMobileMenuOpen(false)}} className="w-full text-left px-4 py-3 rounded-lg text-white font-medium hover:bg-blue-600">Pengajar</button>
                     <button onClick={() => {setActiveTab('Berita'); setIsMobileMenuOpen(false)}} className="w-full text-left px-4 py-3 rounded-lg text-white font-medium hover:bg-blue-600">Berita</button>
+                    <button onClick={() => {setActiveTab('Galeri'); setIsMobileMenuOpen(false)}} className="w-full text-left px-4 py-3 rounded-lg text-white font-medium hover:bg-blue-600">Galeri</button>
                   </div>
                 )}
               </nav>
 
-              {/* Main Content Area */}
               <main className="flex-grow w-full mx-auto" style={{maxWidth: activeTab === 'Beranda' ? '100%' : '80rem'}}>
                 {renderContent()}
               </main>
 
-              {/* FOOTER - LENGKAP DENGAN KONTAK DAN SOSMED */}
               <footer className="bg-[#0f172a] text-slate-300 py-16 mt-auto border-t-[8px] border-alo-blue">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
                   <div className="col-span-1 md:col-span-1">
-                    <span className="text-2xl font-bold text-white tracking-tight uppercase block mb-4">ADINKESTC</span>
+                    <span className="text-2xl font-bold text-white tracking-tight uppercase block mb-4">MEDIKAEDU</span>
                     <p className="text-slate-400 mb-6 text-sm leading-relaxed">
                       Lembaga pelatihan dan edukasi medis independen terkemuka di Indonesia, mencetak SDM kesehatan yang kompeten dan profesional.
                     </p>
@@ -561,6 +522,7 @@
                       <li><button onClick={() => navigateToSchedule('Pelatihan')} className="hover:text-white transition-colors">Jadwal Pelatihan</button></li>
                       <li><button onClick={() => setActiveTab('Pengajar')} className="hover:text-white transition-colors">Instruktur Ahli</button></li>
                       <li><button onClick={() => setActiveTab('Berita')} className="hover:text-white transition-colors">Artikel Kesehatan</button></li>
+                      <li><button onClick={() => setActiveTab('Galeri')} className="hover:text-white transition-colors">Galeri Kegiatan</button></li>
                     </ul>
                   </div>
 
@@ -589,7 +551,6 @@
                       </div>
                     </div>
 
-                    {/* Social Media Icons SVG */}
                     <div className="mt-8 pt-6 border-t border-slate-600 flex gap-4">
                         <a href="#" className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-alo-blue transition-colors text-white">
                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -616,7 +577,6 @@
                 </div>
               </footer>
 
-              {/* Floating WhatsApp Button */}
               <a 
                 href="https://wa.me/6281234567890" 
                 target="_blank" 
@@ -629,7 +589,7 @@
                 </span>
               </a>
 
-              {/* Booking Modal (Tetap sama) */}
+              {}
               {isModalOpen && selectedCourse && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[70] flex items-center justify-center p-4">
                   <div className="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl animate-fade-in">
@@ -648,7 +608,7 @@
                           </div>
                           <h4 className="text-xl font-bold text-slate-800 mb-2">Reservasi Berhasil!</h4>
                           <p className="text-slate-500 text-sm">Silakan cek email atau WhatsApp Anda untuk instruksi selanjutnya.</p>
-                          <button onClick={() => setIsModalOpen(false)} className="mt-6 text-alo-blue font-semibold text-sm border px-4 py-2 rounded-lg">Tutup Jendela</button>
+                          <button onClick={() => setIsModalOpen(false)} className="mt-6 text-alo-blue font-semibold text-sm border px-4 py-2 rounded-lg hover:bg-slate-50">Tutup Jendela</button>
                         </div>
                       ) : (
                         <form onSubmit={handleFormSubmit} className="space-y-4">
